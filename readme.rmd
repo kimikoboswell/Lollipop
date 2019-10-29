@@ -1,1 +1,27 @@
-responses 
+# Project code name 
+
+# Working Title
+
+# Team memmber names
+
+# Affiliation
+
+# Problem situation
+
+# What is the problem?
+
+# Why does it matter?
+
+# How will it be addressed?
+
+# Research questions
+
+# Possible data sets
+
+# Info visualizations
+
+# Team work committments
+
+# Project questions/comments
+
+# Refrences

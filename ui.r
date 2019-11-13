@@ -9,9 +9,11 @@ ui <- fluidPage(
   theme = shinytheme("darkly"),
   titlePanel("Police Killings"),
   sidebarLayout(
-    
-  ),
-  mainPanel(
-    plotOutput(outputId = "")
+    sidebarPanel(
+      
+    ),
+    mainPanel(
+      plotOutput(outputId = "")
+    )
   )
 )

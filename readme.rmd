@@ -1,27 +1,5 @@
-# Project code name 
+# Introduction to Project Comparing Police Killings to Police Deaths
 
-# Working Title
+In this project, we will analyze which group of people (by age, race, and other factors), are most subject to police killings and police deaths. Furthermore, we will determine whether there is the group of people most subject to death are the same on both the police killings and police victims side.
 
-# Team memmber names
-
-# Affiliation
-
-# Problem situation
-
-# What is the problem?
-
-# Why does it matter?
-
-# How will it be addressed?
-
-# Research questions
-
-# Possible data sets
-
-# Info visualizations
-
-# Team work committments
-
-# Project questions/comments
-
-# Refrences
+Link to Proposal Wiki -> https://github.com/kimikoboswell/Lollipop/wiki/Project-Proposal

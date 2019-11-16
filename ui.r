@@ -6,6 +6,8 @@ library(dplyr)
 library(ggplot2)
 
 ui <- fluidPage(
+  
+  titlePanel("What is the Correlation of Police Killings?"),
   theme = shinytheme("darkly"),
   titlePanel("Police Killings"),
   sidebarLayout(

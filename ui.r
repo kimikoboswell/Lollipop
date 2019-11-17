@@ -5,10 +5,40 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 
-ui <- fluidPage(
-  
-  titlePanel("What is the Correlation of Police Killings?"),
-  theme = shinytheme("darkly"),
+my_ui <- fluidPage(
+  h2("Greetings")
+)
+
+intro_page <- tabPanel(
+  "Introduction",
+  sidebarLayout(
+    sidebarPanel(
+      h2("How many people were killed in 2018 by police brutality?"),
+      sliderInput(
+        inputId = "age",
+        label = "Age of subjects",
+        min = 0,
+        max = 25000,
+        value = 25
+      )
+      ),
+    
+    mainPanel(
+      p("main panel")
+    )
+  )
+)
+
+
+
+background_page <- tabPanel(
+  "Background",
+  h1("Why Did We Choose This Topic?"),
+  h2("Dispariy Within the United States")
+)
+
+visualizations_page <- tabPanel(
+  "Visualizations",
   titlePanel("Police Killings"),
   sidebarLayout(
     sidebarPanel(
@@ -36,4 +66,26 @@ ui <- fluidPage(
       plotOutput(outputId = "")
     )
   )
+)
+
+conclusion_page <- tabPanel(
+  "Conclusion"
+)
+
+tech_page <- tabPanel(
+  "About the Tech"
+)
+
+us_page <- tabPanel(
+  "About Us"
+)
+
+ui <- navbarPage(
+  "Our App",
+  intro_page,
+  background_page,
+  visualizations_page,
+  conclusion_page,
+  tech_page,
+  us_page
 )

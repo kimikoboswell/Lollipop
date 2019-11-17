@@ -25,3 +25,13 @@ function(input, output) {
   output$value <- renderPrint({ input$select })
   
 }
+function(input, output) {
+  
+  # You can access the values of the widget (as a vector)
+  # with input$checkGroup, e.g.
+  output$value <- renderPrint({
+    message_str <- paste0("To you, police brutality is: ", input$checkGroup)
+    message_str
+    })
+  
+}

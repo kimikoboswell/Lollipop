@@ -29,21 +29,21 @@ server <- function(input, output, session) {
   # })
   # 
   
-  killings_by_region$race <- factor(killings_by_region$race,
+  police_killings$race <- factor(police_killings$race,
                                     levels = c("W", "B", "A", "N", "H", "O", ""))
   
-  killings_by_state <- reactive({
-    req(input$date)
-    validate(need(!is.na(input$date[1]) & !is.na(input$date[2]),
-                  "Error: Please provide both a start and an end date."))
-    validate(need(input$date[1] < input$date[2],
-                  "Error: Start date should be earlier than end date."))
-    police_killings %>% 
-      filter(date > as.POSIXct(input$date[1]) & date < as.POSIXct(input$date[2]),
-             race == input$races) %>%
-      group_by(state) %>%
-      summarize(deaths = n())
-  })
+  # killings_by_state <- reactive({
+  #   req(input$date)
+  #   validate(need(!is.na(input$date[1]) & !is.na(input$date[2]),
+  #                 "Error: Please provide both a start and an end date."))
+  #   validate(need(input$date[1] < input$date[2],
+  #                 "Error: Start date should be earlier than end date."))
+  #   police_killings %>% 
+  #     filter(date > as.POSIXct(input$date[1]) & date < as.POSIXct(input$date[2]),
+  #            race == input$races) %>%
+  #     group_by(state) %>%
+  #     summarize(deaths = n())
+  # })
   
   killings_by_region <- reactive({
     req(input$date)
@@ -52,10 +52,9 @@ server <- function(input, output, session) {
     validate(need(input$date[1] < input$date[2],
                   "Error: Start date should be earlier than end date."))
     police_killings %>% 
-      filter(date > as.POSIXct(input$date[1]) & date < as.POSIXct(input$date[2]),
-             race == input$races) %>%
-      group_by(region) %>%
-      summarize(deaths = n())
+      filter(race %in% input$races,
+             date > as.POSIXct(input$date[1]) & date < as.POSIXct(input$date[2])) %>%
+      group_by(region)
   })
 
   # output$map <- renderLeaflet({
@@ -70,7 +69,7 @@ server <- function(input, output, session) {
   
   output$plot <- renderPlot({
     ggplot(data = killings_by_region(), 
-           aes(killings_by_region()$region, fill = killings_by_region()$race)) +
+           aes(region, fill = race)) +
       geom_bar(stat = "count", position = "dodge") +
       labs(x = "Region",
            y = "Deaths",

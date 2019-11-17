@@ -40,10 +40,21 @@ shinyApp(ui = "ui.R", server = "server.R" )
 
 background_page <- tabPanel(
   "Background",
+  sidebarLayout(
+  sidebarPanel(
+"side bar"
+),
+mainPanel(
   h1("Why Did We Choose This Topic?"),
-  h2("Dispariy Within the United States")
+  
+  h2("Reserach Questions"),
+  p("1. What is the racial breakdown of police shooting victims?"),
+  p("2. Is there a disparity between races killed by police?"),
+  p("3. Which region has the highest amount of shootings?"),
+  p("4. Which region has the highest amount of shootings per race?")
 )
-
+)
+)
 visualizations_page <- tabPanel(
   "Visualizations",
   titlePanel("Police Killings"),
@@ -88,7 +99,8 @@ us_page <- tabPanel(
 )
 
 ui <- navbarPage(
-  "Our Shiny App",
+  theme = shinytheme("darkly"),
+  "Police Brutality",
   intro_page,
   background_page,
   visualizations_page,

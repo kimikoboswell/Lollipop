@@ -5,31 +5,21 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 
-my_ui <- fluidPage(
-  h2("Greetings")
-)
 
 intro_page <- tabPanel(
   "Introduction",
   sidebarLayout(
-    sidebarPanel(
-      h2("How many people were killed in 2018 by police brutality?"),
-      sliderInput(
-        inputId = "age",
-        label = "Age of subjects",
-        min = 0,
-        max = 25000,
-        value = 25
-      )
-      ),
-    
-    mainPanel(
-      p("main panel")
-    )
-  )
+  sidebarPanel(
+  h2("How many people were killed in 2018?"),
+  textInput(inputId = "guess", label = "What is your guess?"),
+  textOutput(outputId = "message")
+),
+mainPanel(
+  "mainpanel"
 )
-
-
+)
+)
+shinyApp(ui = "ui.R", server = "server.R" )
 
 background_page <- tabPanel(
   "Background",
@@ -81,7 +71,7 @@ us_page <- tabPanel(
 )
 
 ui <- navbarPage(
-  "Our App",
+  "Our Shiny App",
   intro_page,
   background_page,
   visualizations_page,

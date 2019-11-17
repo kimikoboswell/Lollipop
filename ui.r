@@ -20,7 +20,7 @@ ui <- fluidPage(
                            "Native American" = "N",
                            "Hispanic" = "H",
                            "Other" = "O",
-                           "Unknown" = "None"),
+                           "Unknown" = ""),
                          selected = c("All",
                                       "W",
                                       "B",
@@ -28,15 +28,15 @@ ui <- fluidPage(
                                       "N",
                                       "H",
                                       "O",
-                                      "None"),
+                                      ""),
                          inline = TRUE),
-      
       dateRangeInput("date", strong("Date range:"), 
                      start = "2015-01-01", end = "2019-11-09",
                      min = "2015-01-01", max = "2019-11-09")
     ),
     mainPanel(
-      plotOutput(outputId = "")
+      # leafletOutput(outputId = "map")
+      plotOutput(outputId = "plot")
     )
   )
 )

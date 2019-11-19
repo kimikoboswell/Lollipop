@@ -24,7 +24,9 @@ intro_page <- tabPanel(
     fluidRow(column(12, verbatimTextOutput("value")))
     
   ),
-    strong(sQuote("Most middle-class whites have no idea what if feels like to be subjected to police who are rountiely suspicous, rude, belligerent, and brutal")),
+    img(src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJwGkdahnf7RFU373y8To-Z5th93SRtZugPMBDbljknH2lFeBSQ&s", height = "100%", width = "100%", align = "center"),
+    p("Photo by Amanda Pickett"),
+    h4(strong(sQuote("Most middle-class whites have no idea what if feels like to be subjected to police who are rountiely suspicous, rude, belligerent, and brutal"))),
     p("- Dr. Benjamin Spock")
 ),
 mainPanel(
@@ -38,8 +40,8 @@ mainPanel(
   p("The U.S. should take action on the problem of instituionalized racism"),
   h4("How will it be Addressed?"),
   p("By analyzing data from police killings of 2018 and grouping the information by numerous factors such as race, age, gender, etc."),
-  img("By Dillon Nettles, Policy Analyst, ACLU of Alabama", src = "https://www.aclu.org/sites/default/files/styles/blog_main_wide_580x384/public/field_image/web18-arrestbw-1160x768.jpg?itok=FxFI4Nhc"),
-  imageOutput("myImage")
+  img(src = "https://www.aclu.org/sites/default/files/styles/blog_main_wide_580x384/public/field_image/web18-arrestbw-1160x768.jpg?itok=FxFI4Nhc", height = "50%", width = "50%", align = "center"),
+  p("By Dillon Nettles, Policy Analyst, ACLU of Alabama")
 ) 
 )
 )
@@ -63,7 +65,8 @@ background_page <- tabPanel(
 ),
 mainPanel(
   h1("Why Did We Choose This Topic?"),
-  img("Image by ep_jhu via Flickr Creative Commons", src = "https://fresnoalliance.com/wp-content/uploads/2015/01/15014376865_930e981546_b.jpg"),
+  img(src = "https://fresnoalliance.com/wp-content/uploads/2015/01/15014376865_930e981546_b.jpg", height = "50%", width = "50%", align = "center"),
+  p("Image by ep_jhu via Flickr Creative Commons"),
   
   h2("Reserach Questions"),
   p("1. What is the racial breakdown of police shooting victims?"),

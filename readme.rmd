@@ -4,3 +4,4 @@ In this project, we will analyze which group of people (by age, race, and other 
 Furthermore, we will determine regions are more susceptible to police violence.
 
 Link to Proposal Wiki -> <https://github.com/kimikoboswell/Lollipop/wiki/Project-Proposal>
+Link to Technical Report -> https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report

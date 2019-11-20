@@ -133,29 +133,29 @@ visualizations_page <- tabPanel(
 conclusion_page <- tabPanel(
   "Conclusion",
   h1 ("Conclusion"),
-  h5 ("This project gave us an opportunity
+  p("This project gave us an opportunity
       to work on our coding and teamwork skills.
       With that said, it definetly had it's ups
       and downs. "),
   h3("Strengths"),
-  h5("-We were able to divide tasks based on what
+  p("-We were able to divide tasks based on what
      each of us was good on. Tung was very helpful
      with visualization creation. Autumn worked extensively
      to create a functioning website. Kimiko went through and 
      filled in the back end of the report, as well as 
      update the proposal to reflect our current project."),
-  h5("-Despite having very different schedules, we all managed
+  p("-Despite having very different schedules, we all managed
      to meet and finish our assigned tasks"),
   h3("Weaknesses"),
-  h5("-Our original dataset and thesis were faulty and we had to
+  p("-Our original dataset and thesis were faulty and we had to
      play a game of catch up, trying to find a new dataset."),
-  h5("-We all had different schedules, and it was hard to find
+  p("-We all had different schedules, and it was hard to find
      times were we could all meet."),
-  h5("-Creating a substantial visualization was hard because we were
+  p("-Creating a substantial visualization was hard because we were
      missing information to make the type of visualization we wanted to
      make at first."),
   h3("Lessons"),
-  h5("We learned quite a bit from doing this project. We learned how 
+  p("We learned quite a bit from doing this project. We learned how 
      data can be hard to manipulate, and how it is important to find 
      datasets which fit our overall plan. We also learned the importance
      of communicating when merging, especially if on the same branch. 
@@ -163,7 +163,7 @@ conclusion_page <- tabPanel(
      to make sure everyone is getting their part done and that no 
      question remain unasked."),
   h3("Future Work"),
-  h5("There is a lot of potential for our work to 
+  p("There is a lot of potential for our work to 
      be used in the future by us or by someone else. We simply
      highlighted aspects of Police Brutality within the U.S.
      for one year. Someone could analyze it for multiple years
@@ -180,8 +180,38 @@ conclusion_page <- tabPanel(
 #Input table or representation of all columnnames
 tech_page <- tabPanel(
   "About the Tech (Appendix 1)",
-  
-  
+  h2("Label Names"),
+  h5("The following section explains the names
+     of the columns in our dataset and what each
+     column means."),
+  p(strong("name:"),"This column contains the name
+    of the victim of police violence."),
+  p(strong("date:"),"This column contains the date
+    which the victim died."),
+  p(strong("manner_of_death:"),"This column briefly
+    explains how the victim died(ex:shot, tasered"),
+  p(strong("armed:"),"This column states whether
+    the victim was armed and with what."),
+  p(strong("age:"),"This column contains the 
+    victim's name."),
+  p(strong("gender:"),"This column contains the 
+    gender of the victim"),
+  p(strong("race:"),"This column contains the race
+    of the victim"),
+  p(strong("city:"),"This column contains the city
+    where the victim was killed."),
+  p(strong("state:"),"This column contains the state
+    where the victim was killed."),
+  p(strong("signs_of_mental_illness:"),"This column 
+    explains whether the victim had am ental illness"),
+  p(strong("threat_level:"),"This column explains
+    the threat they gave to supposedly instigate
+    the shooting."),
+  p(strong("flee:"),"This column describes
+    whether the victim was fleeing or not and how."),
+  p(strong("body_camera:"),"This column answers
+    whether a body camera was present on the cop
+    at the time of the shooting."),
 )
 #Find a way to use photos from files
 us_page <- tabPanel(
@@ -191,20 +221,35 @@ us_page <- tabPanel(
   h5("Freshman studying
      Informatics, and Criminology"),
   #following header is for Autumn's bio
-  h5(""),
+  p("From this project I realized one of numerous observations. 
+     The first is, there are more unarmed police killings than  
+     I ever thought imaginable. 
+     The second is the race disparity is quite large. 
+     Police brutality is a serious issue that has even more serious outcomes. 
+     The most satisfactory part of the project was seeing all 
+     of our current ideas come to life through shiny. 
+     One of the most unsatisfactory run-ins was a simple g
+     rammatical error throwing off the whole page of code created. 
+     For the future this project opened a gateway to
+     creativity. With every new task, we grow as creators,
+     inventors, and coders."),
   h3("Kimiko Boswell"),
   h5("Senior studying International
      Studies, Immigration, and Informatics"),
-  h5("After doing this assignment, I learned how to
+  p("After doing this assignment, I learned how to
      effectively create a website using shiny and utilize
      datasources to come to conclusions. I was really frustrated
      with the merging process, but it felt so satisfying when
      the website worked and I got to see all the hard work me and 
-     especially my teammates put in."),
+     especially my teammates put in. In regards to the data, I was
+     surprised by the outcome of our question. To see such a large
+     amount of police violence in my home state (California) was very
+     alarming. Although I understand that there are more police forces
+     and residents in California in most states, I still think it is 
+     saddening to see such a presence of police violence in that area."),
   h3("Tung Netmaneesuk"),
   h5("Junior studying Psychology"),
   #following header is for Tung's bio
-  h5(""),
 )
 
 ui <- navbarPage(

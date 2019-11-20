@@ -1,5 +1,5 @@
-# Introduction to Project Comparing Police Killings to Police Deaths
+# Introduction to Project Comparing Police Killings by Region
 
-In this project, we will analyze which group of people (by age, race, and other factors), are most subject to police killings and police deaths. Furthermore, we will determine whether there is the group of people most subject to death are the same on both the police killings and police victims side.
+In this project, we will analyze which group of people (by age, race, and other factors), are most subject to police killings. Furthermore, we will determine regions are more susceptible to police violence.
 
 Link to Proposal Wiki -> <https://github.com/kimikoboswell/Lollipop/wiki/Project-Proposal>

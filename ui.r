@@ -4,101 +4,103 @@ library(shinythemes)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
+library(leaflet)
 library(colourpicker)
-
 
 intro_page <- tabPanel(
   "Introduction",
   sidebarLayout(
-  sidebarPanel(
-  h2("What is police brutality to you?"),
-  fluidPage(
-    # Copy the chunk below to make a group of checkboxes
-    checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
-    choices = list("Excessive Force" = "excessive force", "Racial Profiling"
-         = "racial profiling", "Police Perjury" = "police perjury",
-                    "Abuse of Authority" = "abuse of authority"),
-                       selected = "select one"),
-    hr(),
-    fluidRow(column(11, verbatimTextOutput("value")))
-  ),
-    img(src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:
-        ANd9GcTiJwGkdahnf7RFU373y8To-Z5th93SRtZugPMBDbljknH2lFeBSQ&s"
-        , height = "100%", width = "100%", align = "center"),
-    p("Photo by Amanda Pickett"),
-    h4(strong(sQuote("Most middle-class whites have no idea
-                     what if feels like to be subjected to police
-                     who are rountiely suspicous, rude, belligerent,
-                     and brutal"))),
-    p("- Dr. Benjamin Spock")
-),
-mainPanel(
-  h1("Who is Most Likely to be Subjected
-     by the Police Based on Regions in the U.S.?"),
-  h4("Problem Situation"),
-  tags$head(tags$style('h4 {color:red;}')),
-  tags$li(p("Minorities have overwhemingly been subjected to police brutatlity")),
-  h4("What is the Problem?"),
-  tags$li(p("Racial disparity amongst the victims of police violence")),
-  h4("Why does it Matter?"),
-  tags$li(p("The U.S. should take action on the problem of instituionalized racism")),
-  h4("How will it be Addressed?" ),
-  tags$li(p("By analyzing data from police killings of 2018 and
-    grouping the information by numerous factors such
-    as race, age, gender, etc.")),
-  img(src = "https://www.aclu.org/sites/default/files/styles/blog_main_wide_580x384/public/field_image/web18-arrestbw-1160x768.jpg?itok=FxFI4Nhc"
-      , height = "50%",
-      width = "50%", align = "center"),
-  p("Photo by Dillon Nettles, Policy Analyst, ACLU of Alabama")
-)
-)
+    sidebarPanel(
+      h2("What is police brutality to you?"),
+      fluidPage(
+        # Copy the chunk below to make a group of checkboxes
+        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+                           choices = list("Excessive Force" = "excessive force",
+                                          "Racial Profiling" = "racial profiling",
+                                          "Police Perjury" = "police perjury",
+                                          "Abuse of Authority" = "abuse of authority"),
+                           selected = "select one"),
+        hr(),
+        fluidRow(column(11, verbatimTextOutput("value")))
+        ),
+        img(src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJwGkdahnf7RFU373y8To-Z5th93SRtZugPMBDbljknH2lFeBSQ&s",
+            height = "100%", width = "100%", align = "center"),
+        p("Photo by Amanda Pickett"),
+        h4(strong(sQuote("Most middle-class whites have no idea
+        what if feels like to be subjected to police
+        who are rountiely suspicous, rude, belligerent,
+        and brutal"))),
+        p("- Dr. Benjamin Spock")
+      ),
+    mainPanel(
+      h1("Who is Most Likely to be Subjected
+         by the Police Based on Regions in the U.S.?"),
+      h4("Problem Situation"),
+      tags$head(tags$style('h4 {color:red;}')),
+      tags$li("Minorities have overwhemingly been subjected to police brutatlity"),
+      h4("What is the Problem?"),
+      tags$li("Racial disparity amongst the victims of police violence"),
+      h4("Why does it Matter?"),
+      tags$li("The U.S. should take action on the problem of instituionalized racism"),
+      h4("How will it be Addressed?" ),
+      tags$li("By analyzing data from police killings of 2018 and
+              grouping the information by numerous factors such
+              as race, age, gender, etc."),
+      br(),
+      img(src = "https://www.aclu.org/sites/default/files/styles/blog_main_wide_580x384/public/field_image/web18-arrestbw-1160x768.jpg?itok=FxFI4Nhc",
+          height = "50%", width = "50%", align = "center"),
+      p("Photo by Dillon Nettles, Policy Analyst, ACLU of Alabama")
+    )
+  )
 )
 
 background_page <- tabPanel(
   "Background",
   sidebarLayout(
-  sidebarPanel(
-    h2("Have you ever been subject to police brutality?"),
-    fluidPage(
-      # Copy the line below to make a select box
-      selectInput("select", label = h3("Select box"),
-                  choices = list("Select One" = 0,
-                                 "Yes" = 1, "No" = 2, "I'm not sure" = 3),
-                  selected = 0)
+    sidebarPanel(
+      h2("Have you ever been subject to police brutality?"),
+      fluidPage(
+        # Copy the line below to make a select box
+        selectInput("select", label = h3("Select box"),
+                    choices = list("Select One" = 0,
+                                   "Yes" = 1, "No" = 2, "I'm not sure" = 3),
+                    selected = 0)
+      ),
+      img(src = "https://encrypted-tbn0.gstatic.com/images
+          ?q=tbn:ANd9GcTd4k7eqgSiQS60TbbWW2zaJQEQH27
+          mRejmDyPEUslCnw7Zs0iktQ&s",
+          height = "50%", width = "50%"),
+      p("Photo by Charles Pulliam-Moore"),
+      h4(strong(sQuote("Justice cannont be something
+                       that one part of society inflicts on the other."))),
+      p("- Cathy O'Neil, Weapons of Math Destruction")
     ),
-    img(src = "https://encrypted-tbn0.gstatic.com/images
-        ?q=tbn:ANd9GcTd4k7eqgSiQS60TbbWW2zaJQEQH27
-        mRejmDyPEUslCnw7Zs0iktQ&s",
-        height = "50%", width = "50%"),
-    p("Photo by Charles Pulliam-Moore"),
-    h4(strong(sQuote("Justice cannont be something
-                     that one part of society inflicts on the other."))),
-    p("- Cathy O'Neil, Weapons of Math Destruction")
-),
-mainPanel(
-  h1("Why Did We Choose This Topic?"),
-  tags$div(
-    tags$ul(
-      tags$li("Hundreds of unarmed people have lost their 
-              lives at the hands of police officers"),
-      tags$li("Racial disparity in 
-              the United States is right before our eyes"),
-      tags$li("Differences in race, religion,
-              politics, etc. exist between police and citizen"),
-      tags$li("Drastic changes are needed in our approach to public safety")
+    mainPanel(
+      h1("Why Did We Choose This Topic?"),
+      tags$div(
+        tags$ul(
+          tags$li("Hundreds of unarmed people have lost their 
+                  lives at the hands of police officers"),
+          tags$li("Racial disparity in 
+                  the United States is right before our eyes"),
+          tags$li("Differences in race, religion,
+                  politics, etc. exist between police and citizen"),
+          tags$li("Drastic changes are needed in our approach to public safety")
+        )
+      ),
+      img(src = "https://fresnoalliance.com/wp-content/uploads/2015/01/15014376865_930e981546_b.jpg",
+          height = "50%", width = "50%", align = "center"),
+      p("Image by ep_jhu via Flickr Creative Commons"),
+      h2("Research Questions"),
+      p("1. What is the racial breakdown of police shooting victims?"),
+      p("2. Is there a disparity between races killed by police?"),
+      p("3. Which region has the highest amount of shootings?"),
+      p("4. Which region has the highest amount of shootings per race?")
     )
-  ),
-  img(src = "https://fresnoalliance.com/wp-content/uploads/2015/01/15014376865_930e981546_b.jpg"
-      , height = "50%", width = "50%", align = "center"),
-  p("Image by ep_jhu via Flickr Creative Commons"),
-  h2("Research Questions"),
-  p("1. What is the racial breakdown of police shooting victims?"),
-  p("2. Is there a disparity between races killed by police?"),
-  p("3. Which region has the highest amount of shootings?"),
-  p("4. Which region has the highest amount of shootings per race?")
+  )
 )
-)
-)
+
+# page with all interactive visualizations
 visualizations_page <- tabPanel(
   "Visualizations",
   titlePanel("Police Killings"),
@@ -112,7 +114,7 @@ visualizations_page <- tabPanel(
                            "Native American" = "N",
                            "Hispanic" = "H",
                            "Other" = "O",
-                           "Unknown" = "None"),
+                           "Unknown" = ""),
                          selected = c("All",
                                       "W",
                                       "B",
@@ -120,22 +122,20 @@ visualizations_page <- tabPanel(
                                       "N",
                                       "H",
                                       "O",
-                                      "None"),
+                                      ""),
                          inline = TRUE),
-<<<<<<< HEAD
-      
       dateRangeInput("date", strong("Date range:"), 
-=======
-      dateRangeInput("date", strong("Date range:"),
->>>>>>> cde41926146c84cc18ce1e10a30c0860d8f3a8ba
                      start = "2015-01-01", end = "2019-11-09",
                      min = "2015-01-01", max = "2019-11-09")
     ),
     mainPanel(
-      "main panel"
-    )
+      plotOutput(outputId = "plot"),
+      br(),
+      leafletOutput(outputId = "map")
     )
   )
+)
+
 # for following section, need to add photos
 conclusion_page <- tabPanel(
   "Conclusion",
@@ -184,9 +184,12 @@ conclusion_page <- tabPanel(
      https://www.washingtonpost.com/graphics/
      2018/national/police-shootings-2018/."),
 )
+
 #Input table or representation of all columnnames
 tech_page <- tabPanel(
   "About the Tech (Appendix 1)",
+  tags$a(href = "https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report",
+         "Technical Report"),
   h2("Label Names"),
   h5("The following section explains the names
      of the columns in our dataset and what each
@@ -220,6 +223,7 @@ tech_page <- tabPanel(
     whether a body camera was present on the cop
     at the time of the shooting."),
 )
+
 #Find a way to use photos from files
 us_page <- tabPanel(
   "About Us",
@@ -256,9 +260,25 @@ us_page <- tabPanel(
      saddening to see such a presence of police violence in that area."),
   h3("Tung Netmaneesuk"),
   h5("Junior studying Psychology"),
-  #following header is for Tung's bio
+  p("This project has shown me the surprising amount of police shootings 
+    in each state. However, if compared to the proportion of the population,
+    I believe the size of visualizations data has shown could be in reverse.
+    The lack of complete data sets and data verification has thrown me off of
+    my plan several times. Fortunately, there are other resources/packages
+    that I could incorporate into making the data more complete and usable.
+    I find the visualizations to be very pleasing when it finally works.
+    In the future, I wish to find more data sets such as population by race,
+    age, gender for each state, region, and country. With all those
+    information, we could visualize more accurate visualizations of incidents
+    and answer better to our research questions. Having participated in this
+    project, I have learned so much more in structuring the code as a coder,
+    as well as debugging the language that does not have quite an explicit
+    debugger like others. As a creator, I learned of many other data sets
+    that I could combine with the current one to form a larger database of
+    visualizations for all relevant information.")
 )
 
+# navigation bar to access all pages
 ui <- navbarPage(
   theme = shinytheme("darkly"),
   "Police Brutality",

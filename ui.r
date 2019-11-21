@@ -4,6 +4,7 @@ library(shinythemes)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
+library(leaflet)
 
 ui <- fluidPage(
   
@@ -35,8 +36,8 @@ ui <- fluidPage(
                      min = "2015-01-01", max = "2019-11-09")
     ),
     mainPanel(
-      # leafletOutput(outputId = "map")
-      plotOutput(outputId = "plot")
+      plotOutput(outputId = "plot"),
+      leafletOutput(outputId = "map")
     )
   )
 )

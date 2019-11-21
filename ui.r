@@ -4,7 +4,6 @@ library(shinythemes)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
-library(leaflet)
 
 ui <- fluidPage(
   
@@ -21,7 +20,7 @@ ui <- fluidPage(
                            "Native American" = "N",
                            "Hispanic" = "H",
                            "Other" = "O",
-                           "Unknown" = ""),
+                           "Unknown" = "None"),
                          selected = c("All",
                                       "W",
                                       "B",
@@ -29,15 +28,15 @@ ui <- fluidPage(
                                       "N",
                                       "H",
                                       "O",
-                                      ""),
+                                      "None"),
                          inline = TRUE),
+      
       dateRangeInput("date", strong("Date range:"), 
                      start = "2015-01-01", end = "2019-11-09",
                      min = "2015-01-01", max = "2019-11-09")
     ),
     mainPanel(
-      plotOutput(outputId = "plot"),
-      leafletOutput(outputId = "map")
+      plotOutput(outputId = "")
     )
   )
 )

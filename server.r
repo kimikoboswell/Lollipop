@@ -19,8 +19,11 @@ server <- function(input, output, session) {
     message_str
   })
   
+  # set working directory to the file's location
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+  
   # read the data of police shootings into data frame
-  police_killings <- read.csv("data/police-killings-with-latlng.csv",
+  police_killings <- read.csv(file = "data/police-killings-with-latlng.csv",
                               stringsAsFactors = FALSE)
   
   # Enable the user to select/deselect all the choices

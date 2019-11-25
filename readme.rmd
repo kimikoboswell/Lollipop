@@ -3,6 +3,6 @@
 In this project, we will analyze which group of people (by age, race, and other factors), are most subject to police killings. 
 Furthermore, we will determine regions are more susceptible to police violence.
 
-Link to Proposal Wiki <- [https://github.com/kimikoboswell/Lollipop/wiki/Project-Proposal]
-Link to Technical Report <- [(https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report)]
-Link to WEbsite <- [https://nathnet.shinyapps.io/Lollipop/]
+Link to Proposal Wiki <- (https://github.com/kimikoboswell/Lollipop/wiki/Project-Proposal)
+Link to Technical Report <- (https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report)
+Link to eEbsite <- (https://nathnet.shinyapps.io/Lollipop/)

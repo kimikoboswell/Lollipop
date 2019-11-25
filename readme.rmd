@@ -5,3 +5,4 @@ Furthermore, we will determine regions are more susceptible to police violence.
 
 Link to Proposal Wiki <- [https://github.com/kimikoboswell/Lollipop/wiki/Project-Proposal]
 Link to Technical Report <- [(https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report)]
+Link to WEbsite <- [https://nathnet.shinyapps.io/Lollipop/]

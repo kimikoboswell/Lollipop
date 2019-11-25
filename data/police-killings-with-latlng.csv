@@ -1,4 +1,4 @@
-"ï..id","name","date","manner_of_death","armed","age","gender","race","city","state","region","signs_of_mental_illness","threat_level","flee","body_camera","lat","lng"
+"id","name","date","manner_of_death","armed","age","gender","race","city","state","region","signs_of_mental_illness","threat_level","flee","body_camera","lat","lng"
 3,"Tim Elliot","2015-01-02","shot","gun",53,"M","A","Shelton","WA","West","True","attack","Not fleeing","False","47.21509","-123.10071"
 4,"Lewis Lee Lembke","2015-01-02","shot","gun",47,"M","W","Aloha","OR","West","False","attack","Not fleeing","False","45.49428","-122.86705"
 5,"John Paul Quintero","2015-01-03","shot and Tasered","unarmed",23,"M","H","Wichita","KS","Midwest","False","other","Not fleeing","False","37.69224","-97.33754"

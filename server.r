@@ -20,7 +20,7 @@ server <- function(input, output, session) {
   })
   
   # set working directory to the file's location
-  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+  # code for setwd: setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
   
   # read the data of police shootings into data frame
   police_killings <- read.csv(file = "data/police-killings-with-latlng.csv",

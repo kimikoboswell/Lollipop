@@ -6,7 +6,7 @@ library(dplyr)
 library(ggplot2)
 library(leaflet)
 library(colourpicker)
-
+"hello"
 intro_page <- tabPanel(
   "Introduction",
   sidebarLayout(

@@ -6,7 +6,7 @@ library(dplyr)
 library(ggplot2)
 library(leaflet)
 library(colourpicker)
-"hello"
+
 intro_page <- tabPanel(
   "Introduction",
   sidebarLayout(
@@ -139,6 +139,21 @@ visualizations_page <- tabPanel(
 # for following section, need to add photos
 conclusion_page <- tabPanel(
   "Conclusion",
+  sidebarLayout(
+    sidebarPanel(
+      h2("What is police brutality to you?"),
+      fluidPage(
+        # Copy the chunk below to make a group of checkboxes
+        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+                           choices = list("Excessive Force" = "excessive force",
+                                          "Racial Profiling" = "racial profiling",
+                                          "Police Perjury" = "police perjury",
+                                          "Abuse of Authority" = "abuse of authority"),
+                           selected = "select one"),
+        hr(),
+        fluidRow(column(11, verbatimTextOutput("value")))
+      ),
+      mainPanel(
   h1 ("Conclusion"),
   p("This project gave us an opportunity
       to work on our coding and teamwork skills.
@@ -182,12 +197,29 @@ conclusion_page <- tabPanel(
   h5("Fatal Force: 2018 Police Shootings Database.,
      The Washington Post, WP Company,
      https://www.washingtonpost.com/graphics/
-     2018/national/police-shootings-2018/."),
+     2018/national/police-shootings-2018/.")
 )
+),
 
 #Input table or representation of all columnnames
 tech_page <- tabPanel(
   "About the Tech (Appendix 1)",
+  sidebarLayout(
+    sidebarPanel(
+      h2("What is police brutality to you?"),
+      fluidPage(
+        # Copy the chunk below to make a group of checkboxes
+        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+                           choices = list("Excessive Force" = "excessive force",
+                                          "Racial Profiling" = "racial profiling",
+                                          "Police Perjury" = "police perjury",
+                                          "Abuse of Authority" = "abuse of authority"),
+                           selected = "select one"),
+        hr(),
+        fluidRow(column(11, verbatimTextOutput("value")))
+      )
+      ),
+      mainPanel(
   tags$a(href = "https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report",
          "Technical Report"),
   h2("Label Names"),
@@ -221,12 +253,30 @@ tech_page <- tabPanel(
     whether the victim was fleeing or not and how."),
   p(strong("body_camera:"),"This column answers
     whether a body camera was present on the cop
-    at the time of the shooting."),
-)
+    at the time of the shooting.")
+      )
+  )
+),
 
 #Find a way to use photos from files
 us_page <- tabPanel(
   "About Us",
+  sidebarLayout(
+    sidebarPanel(
+      h2("What is police brutality to you?"),
+      fluidPage(
+        # Copy the chunk below to make a group of checkboxes
+        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+                           choices = list("Excessive Force" = "excessive force",
+                                          "Racial Profiling" = "racial profiling",
+                                          "Police Perjury" = "police perjury",
+                                          "Abuse of Authority" = "abuse of authority"),
+                           selected = "select one"),
+        hr(),
+        fluidRow(column(11, verbatimTextOutput("value")))
+      )
+      ),
+      mainPanel(
   h1("Team Members"),
   h3("Autumn Rausch"),
   h5("Freshman studying
@@ -277,6 +327,8 @@ us_page <- tabPanel(
     that I could combine with the current one to form a larger database of
     visualizations for all relevant information.")
 )
+)
+),
 
 # navigation bar to access all pages
 ui <- navbarPage(

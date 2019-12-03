@@ -152,6 +152,7 @@ conclusion_page <- tabPanel(
                            selected = "select one"),
         hr(),
         fluidRow(column(11, verbatimTextOutput("value")))
+      )
       ),
       mainPanel(
   h1 ("Conclusion"),
@@ -199,7 +200,8 @@ conclusion_page <- tabPanel(
      https://www.washingtonpost.com/graphics/
      2018/national/police-shootings-2018/.")
 )
-),
+)
+)
 
 #Input table or representation of all columnnames
 tech_page <- tabPanel(
@@ -256,7 +258,7 @@ tech_page <- tabPanel(
     at the time of the shooting.")
       )
   )
-),
+)
 
 #Find a way to use photos from files
 us_page <- tabPanel(
@@ -328,7 +330,7 @@ us_page <- tabPanel(
     visualizations for all relevant information.")
 )
 )
-),
+)
 
 # navigation bar to access all pages
 ui <- navbarPage(

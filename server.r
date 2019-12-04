@@ -9,7 +9,7 @@ library(colourpicker)
 
 server <- function(input, output, session) {
   
-  # You can access the value of the widget with input$select, e.g.
+  # You can access the value of the widget with input$checkGroup, e.g.
   output$value <- renderPrint({ input$select })
   
   # You can access the values of the widget (as a vector)
@@ -112,8 +112,8 @@ server <- function(input, output, session) {
         values = c("#800080", "#4b0082", "#0000ff", "#00ff00", "#ffff00",
                    "#ffa500", "#ff0000"),
         breaks = c("W", "B", "A", "N", "H", "O", ""),
-        labels = c("Caucasian", "African", "Asian", "Native American",
-                   "Hispanic", "Other", "Unknown")
+        labels = c("Caucasian/White", "African/African American", "Asian/Asian American",
+                   "Native American", "Hispanic", "Other", "Unknown")
       )
   })
 }

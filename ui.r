@@ -31,7 +31,7 @@ intro_page <- tabPanel(
         who are rountiely suspicous, rude, belligerent,
         and brutal"))),
         p("- Dr. Benjamin Spock")
-      ),
+    ),
     mainPanel(
       h1("Who is Most Likely to be Subjected
          by the Police Based on Regions in the U.S.?"),
@@ -144,63 +144,63 @@ conclusion_page <- tabPanel(
       h2("What is police brutality to you?"),
       fluidPage(
         # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+        checkboxGroupInput("checkGroup2", label = h3("Checkbox group"),
                            choices = list("Excessive Force" = "excessive force",
                                           "Racial Profiling" = "racial profiling",
                                           "Police Perjury" = "police perjury",
                                           "Abuse of Authority" = "abuse of authority"),
                            selected = "select one"),
-        hr(),
-        fluidRow(column(11, verbatimTextOutput("value")))
+        hr()
+        # fluidRow(column(11, verbatimTextOutput("value2")))
       )
-      ),
-      mainPanel(
-  h1 ("Conclusion"),
-  p("This project gave us an opportunity
-      to work on our coding and teamwork skills.
-      With that said, it definetly had it's ups
-      and downs. "),
-  h3("Strengths"),
-  p("-We were able to divide tasks based on what
-     each of us was good on. Tung was very helpful
-     with visualization creation. Autumn worked extensively
-     to create a functioning website. Kimiko went through and 
-     filled in the back end of the report, as well as 
-     update the proposal to reflect our current project."),
-  p("-Despite having very different schedules, we all managed
-     to meet and finish our assigned tasks"),
-  h3("Weaknesses"),
-  p("-Our original dataset and thesis were faulty and we had to
-     play a game of catch up, trying to find a new dataset."),
-  p("-We all had different schedules, and it was hard to find
-     times were we could all meet."),
-  p("-Creating a substantial visualization was hard because we were
-     missing information to make the type of visualization we wanted to
-     make at first."),
-  h3("Lessons"),
-  p("We learned quite a bit from doing this project. We learned how 
-     data can be hard to manipulate, and how it is important to find 
-     datasets which fit our overall plan. We also learned the importance
-     of communicating when merging, especially if on the same branch. 
-     Finally, we learned the importance about consistent communication
-     to make sure everyone is getting their part done and that no 
-     question remain unasked."),
-  h3("Future Work"),
-  p("There is a lot of potential for our work to 
-     be used in the future by us or by someone else. We simply
-     highlighted aspects of Police Brutality within the U.S.
-     for one year. Someone could analyze it for multiple years
-     and maybe pull a conclusion about the fluctuation ins police 
-     brutality rates. They could then take it a step further
-     by adding the real world context to explain the fluctuations
-     in police shootings."),
-  h2("References"),
-  h5("Fatal Force: 2018 Police Shootings Database.,
-     The Washington Post, WP Company,
-     https://www.washingtonpost.com/graphics/
-     2018/national/police-shootings-2018/.")
-)
-)
+    ),
+    mainPanel(
+      h1 ("Conclusion"),
+      p("This project gave us an opportunity
+          to work on our coding and teamwork skills.
+          With that said, it definetly had it's ups
+          and downs. "),
+      h3("Strengths"),
+      p("-We were able to divide tasks based on what
+         each of us was good on. Tung was very helpful
+         with visualization creation. Autumn worked extensively
+         to create a functioning website. Kimiko went through and 
+         filled in the back end of the report, as well as 
+         update the proposal to reflect our current project."),
+      p("-Despite having very different schedules, we all managed
+         to meet and finish our assigned tasks"),
+      h3("Weaknesses"),
+      p("-Our original dataset and thesis were faulty and we had to
+         play a game of catch up, trying to find a new dataset."),
+      p("-We all had different schedules, and it was hard to find
+         times were we could all meet."),
+      p("-Creating a substantial visualization was hard because we were
+         missing information to make the type of visualization we wanted to
+         make at first."),
+      h3("Lessons"),
+      p("We learned quite a bit from doing this project. We learned how 
+         data can be hard to manipulate, and how it is important to find 
+         datasets which fit our overall plan. We also learned the importance
+         of communicating when merging, especially if on the same branch. 
+         Finally, we learned the importance about consistent communication
+         to make sure everyone is getting their part done and that no 
+         question remain unasked."),
+      h3("Future Work"),
+      p("There is a lot of potential for our work to 
+         be used in the future by us or by someone else. We simply
+         highlighted aspects of Police Brutality within the U.S.
+         for one year. Someone could analyze it for multiple years
+         and maybe pull a conclusion about the fluctuation ins police 
+         brutality rates. They could then take it a step further
+         by adding the real world context to explain the fluctuations
+         in police shootings."),
+      h2("References"),
+      h5("Fatal Force: 2018 Police Shootings Database.,
+         The Washington Post, WP Company,
+         https://www.washingtonpost.com/graphics/
+         2018/national/police-shootings-2018/.")
+    )
+  )
 )
 
 #Input table or representation of all columnnames
@@ -211,52 +211,52 @@ tech_page <- tabPanel(
       h2("What is police brutality to you?"),
       fluidPage(
         # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+        checkboxGroupInput("checkGroup3", label = h3("Checkbox group"),
                            choices = list("Excessive Force" = "excessive force",
                                           "Racial Profiling" = "racial profiling",
                                           "Police Perjury" = "police perjury",
                                           "Abuse of Authority" = "abuse of authority"),
                            selected = "select one"),
-        hr(),
-        fluidRow(column(11, verbatimTextOutput("value")))
+        hr()
+        # fluidRow(column(11, verbatimTextOutput("value3")))
       )
-      ),
-      mainPanel(
-  tags$a(href = "https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report",
-         "Technical Report"),
-  h2("Label Names"),
-  h5("The following section explains the names
-     of the columns in our dataset and what each
-     column means."),
-  p(strong("name:"),"This column contains the name
-    of the victim of police violence."),
-  p(strong("date:"),"This column contains the date
-    which the victim died."),
-  p(strong("manner_of_death:"),"This column briefly
-    explains how the victim died(ex:shot, tasered"),
-  p(strong("armed:"),"This column states whether
-    the victim was armed and with what."),
-  p(strong("age:"),"This column contains the 
-    victim's name."),
-  p(strong("gender:"),"This column contains the 
-    gender of the victim"),
-  p(strong("race:"),"This column contains the race
-    of the victim"),
-  p(strong("city:"),"This column contains the city
-    where the victim was killed."),
-  p(strong("state:"),"This column contains the state
-    where the victim was killed."),
-  p(strong("signs_of_mental_illness:"),"This column 
-    explains whether the victim had am ental illness"),
-  p(strong("threat_level:"),"This column explains
-    the threat they gave to supposedly instigate
-    the shooting."),
-  p(strong("flee:"),"This column describes
-    whether the victim was fleeing or not and how."),
-  p(strong("body_camera:"),"This column answers
-    whether a body camera was present on the cop
-    at the time of the shooting.")
-      )
+    ),
+    mainPanel(
+      tags$a(href = "https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report",
+             "Technical Report"),
+      h2("Label Names"),
+      h5("The following section explains the names
+         of the columns in our dataset and what each
+         column means."),
+      p(strong("name:"),"This column contains the name
+        of the victim of police violence."),
+      p(strong("date:"),"This column contains the date
+        which the victim died."),
+      p(strong("manner_of_death:"),"This column briefly
+        explains how the victim died(ex:shot, tasered"),
+      p(strong("armed:"),"This column states whether
+        the victim was armed and with what."),
+      p(strong("age:"),"This column contains the 
+        victim's name."),
+      p(strong("gender:"),"This column contains the 
+        gender of the victim"),
+      p(strong("race:"),"This column contains the race
+        of the victim"),
+      p(strong("city:"),"This column contains the city
+        where the victim was killed."),
+      p(strong("state:"),"This column contains the state
+        where the victim was killed."),
+      p(strong("signs_of_mental_illness:"),"This column 
+        explains whether the victim had am ental illness"),
+      p(strong("threat_level:"),"This column explains
+        the threat they gave to supposedly instigate
+        the shooting."),
+      p(strong("flee:"),"This column describes
+        whether the victim was fleeing or not and how."),
+      p(strong("body_camera:"),"This column answers
+        whether a body camera was present on the cop
+        at the time of the shooting.")
+    )
   )
 )
 
@@ -268,68 +268,68 @@ us_page <- tabPanel(
       h2("What is police brutality to you?"),
       fluidPage(
         # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+        checkboxGroupInput("checkGroup4", label = h3("Checkbox group"),
                            choices = list("Excessive Force" = "excessive force",
                                           "Racial Profiling" = "racial profiling",
                                           "Police Perjury" = "police perjury",
                                           "Abuse of Authority" = "abuse of authority"),
                            selected = "select one"),
-        hr(),
-        fluidRow(column(11, verbatimTextOutput("value")))
+        hr()
+        # fluidRow(column(11, verbatimTextOutput("value4")))
       )
-      ),
-      mainPanel(
-  h1("Team Members"),
-  h3("Autumn Rausch"),
-  h5("Freshman studying
-     Informatics, and Criminology"),
-  #following header is for Autumn's bio
-  p("From this project I realized one of numerous observations. 
-     The first is, there are more unarmed police killings than  
-     I ever thought imaginable. 
-     The second is the race disparity is quite large. 
-     Police brutality is a serious issue that has even more serious outcomes. 
-     The most satisfactory part of the project was seeing all 
-     of our current ideas come to life through shiny. 
-     One of the most unsatisfactory run-ins was a simple g
-     rammatical error throwing off the whole page of code created. 
-     For the future this project opened a gateway to
-     creativity. With every new task, we grow as creators,
-     inventors, and coders."),
-  h3("Kimiko Boswell"),
-  h5("Senior studying International
-     Studies, Immigration, and Informatics"),
-  p("After doing this assignment, I learned how to
-     effectively create a website using shiny and utilize
-     datasources to come to conclusions. I was really frustrated
-     with the merging process, but it felt so satisfying when
-     the website worked and I got to see all the hard work me and 
-     especially my teammates put in. In regards to the data, I was
-     surprised by the outcome of our question. To see such a large
-     amount of police violence in my home state (California) was very
-     alarming. Although I understand that there are more police forces
-     and residents in California in most states, I still think it is 
-     saddening to see such a presence of police violence in that area."),
-  h3("Tung Netmaneesuk"),
-  h5("Junior studying Psychology"),
-  p("This project has shown me the surprising amount of police shootings 
-    in each state. However, if compared to the proportion of the population,
-    I believe the size of visualizations data has shown could be in reverse.
-    The lack of complete data sets and data verification has thrown me off of
-    my plan several times. Fortunately, there are other resources/packages
-    that I could incorporate into making the data more complete and usable.
-    I find the visualizations to be very pleasing when it finally works.
-    In the future, I wish to find more data sets such as population by race,
-    age, gender for each state, region, and country. With all those
-    information, we could visualize more accurate visualizations of incidents
-    and answer better to our research questions. Having participated in this
-    project, I have learned so much more in structuring the code as a coder,
-    as well as debugging the language that does not have quite an explicit
-    debugger like others. As a creator, I learned of many other data sets
-    that I could combine with the current one to form a larger database of
-    visualizations for all relevant information.")
-)
-)
+    ),
+    mainPanel(
+      h1("Team Members"),
+      h3("Autumn Rausch"),
+      h5("Freshman studying
+         Informatics, and Criminology"),
+      #following header is for Autumn's bio
+      p("From this project I realized one of numerous observations. 
+         The first is, there are more unarmed police killings than  
+         I ever thought imaginable. 
+         The second is the race disparity is quite large. 
+         Police brutality is a serious issue that has even more serious outcomes. 
+         The most satisfactory part of the project was seeing all 
+         of our current ideas come to life through shiny. 
+         One of the most unsatisfactory run-ins was a simple g
+         rammatical error throwing off the whole page of code created. 
+         For the future this project opened a gateway to
+         creativity. With every new task, we grow as creators,
+         inventors, and coders."),
+      h3("Kimiko Boswell"),
+      h5("Senior studying International
+         Studies, Immigration, and Informatics"),
+      p("After doing this assignment, I learned how to
+         effectively create a website using shiny and utilize
+         datasources to come to conclusions. I was really frustrated
+         with the merging process, but it felt so satisfying when
+         the website worked and I got to see all the hard work me and 
+         especially my teammates put in. In regards to the data, I was
+         surprised by the outcome of our question. To see such a large
+         amount of police violence in my home state (California) was very
+         alarming. Although I understand that there are more police forces
+         and residents in California in most states, I still think it is 
+         saddening to see such a presence of police violence in that area."),
+      h3("Tung Netmaneesuk"),
+      h5("Junior studying Psychology"),
+      p("This project has shown me the surprising amount of police shootings 
+        in each state. However, if compared to the proportion of the population,
+        I believe the size of visualizations data has shown could be in reverse.
+        The lack of complete data sets and data verification has thrown me off of
+        my plan several times. Fortunately, there are other resources/packages
+        that I could incorporate into making the data more complete and usable.
+        I find the visualizations to be very pleasing when it finally works.
+        In the future, I wish to find more data sets such as population by race,
+        age, gender for each state, region, and country. With all those
+        information, we could visualize more accurate visualizations of incidents
+        and answer better to our research questions. Having participated in this
+        project, I have learned so much more in structuring the code as a coder,
+        as well as debugging the language that does not have quite an explicit
+        debugger like others. As a creator, I learned of many other data sets
+        that I could combine with the current one to form a larger database of
+        visualizations for all relevant information.")
+    )
+  )
 )
 
 # navigation bar to access all pages

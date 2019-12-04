@@ -6,6 +6,7 @@ library(dplyr)
 library(ggplot2)
 library(leaflet)
 library(colourpicker)
+library(plotly)
 
 server <- function(input, output, session) {
   
@@ -46,9 +47,21 @@ server <- function(input, output, session) {
   # })
   # 
   
+  # rename races to full name
+  police_killings$race <- recode(police_killings$race,
+                                 "W" = "Caucasian/White", 
+                                 "B" = "African/African American", 
+                                 "A" = "Asian/Asian American",
+                                 "N" = "Native American",
+                                 "H" = "Hispanic",
+                                 "O" = "Other",
+                                 .default = "Unknown")
+  
   # factor races into levels for bar chart manipulation
   police_killings$race <- factor(police_killings$race,
-                                 levels = c("W", "B", "A", "N", "H", "O", ""))
+                                 levels = c("Caucasian/White", "African/African American",
+                                            "Asian/Asian American", "Native American",
+                                            "Hispanic", "Other", "Unknown"))
   
   # recalculate the data for map every time user input is received
   # filter races and date, then group by region of user's choice
@@ -63,7 +76,8 @@ server <- function(input, output, session) {
       filter(race %in% input$races,
              date > as.POSIXct(input$date[1]) & date < as.POSIXct(input$date[2])) %>%
       group_by(state) %>%
-      summarize(deaths = n(),
+      summarize(state_name = first(full_state),
+                deaths = n(),
                 lat = sum(as.numeric(lat)/n()),
                 lng = sum(as.numeric(lng)/n()))
   })
@@ -76,11 +90,13 @@ server <- function(input, output, session) {
                   "Error: Please provide both a start and an end date."))
     validate(need(input$date[1] < input$date[2],
                   "Error: Start date should be earlier than end date."))
+    
     police_killings %>% 
       filter(race %in% input$races,
              date > as.POSIXct(input$date[1]) & date < as.POSIXct(input$date[2])) %>%
       group_by(region)
   })
+  
   
   # render the map with the center on the center of the US
   # each circle's size is calculated by how many deaths times 1 mile
@@ -93,14 +109,18 @@ server <- function(input, output, session) {
         lat = ~lat,
         lng = ~lng,
         radius = ~deaths * 1610,
-        stroke = FALSE
+        stroke = FALSE,
+        label = sprintf(
+          "<b>State:</b> %s<br><b>Deaths:</b> %g<br>",
+          killings_for_map()$state_name,
+          killings_for_map()$deaths
+        ) %>%
+          lapply(htmltools::HTML)
       )
   })
   
-  # render the bar chart with x as the region groups and y as the amount of deaths
-  # user can manipulate the races to be shown on here
-  # label will be added
-  output$plot <- renderPlot({
+  # interactive plot for display
+  plot_for_render <- reactive({
     ggplot(data = killings_for_plot(),
            aes(region, fill = race)) +
       geom_bar(stat = "count", position = "dodge") +
@@ -115,5 +135,12 @@ server <- function(input, output, session) {
         labels = c("Caucasian/White", "African/African American", "Asian/Asian American",
                    "Native American", "Hispanic", "Other", "Unknown")
       )
+  })
+  
+  # render the bar chart with x as the region groups and y as the amount of deaths
+  # user can manipulate the races to be shown on here
+  # label will be added
+  output$plot <- renderPlotly({
+    ggplotly(plot_for_render(), tooltip = "y")
   })
 }

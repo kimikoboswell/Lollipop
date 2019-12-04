@@ -1,3 +1,4 @@
+library(openintro)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
@@ -10,8 +11,19 @@ police_killings <- read.csv("data/police-killings.csv",
 killings_by_region <- police_killings %>%
   group_by(region)
 
+killings_by_region$race <- recode(killings_by_region$race,
+                                  "W" = "Caucasian/White", 
+                                  "B" = "African/African American", 
+                                  "A" = "Asian/Asian American",
+                                  "N" = "Native American",
+                                  "H" = "Hispanic",
+                                  "O" = "Other",
+                                  .default = "Unknown")
+
 killings_by_region$race <- factor(killings_by_region$race,
-                    levels = c("W", "B", "A", "N", "H", "O", ""))
+                    levels = c("Caucasian/White", "African/African American",
+                               "Asian/Asian American", "Native American",
+                               "Hispanic", "Other", "Unknown"))
 
 ggplot(data = killings_by_region, aes(region, fill = race)) +
   geom_bar(stat = "count", position = "dodge") +
@@ -22,8 +34,11 @@ ggplot(data = killings_by_region, aes(region, fill = race)) +
     name = "Races",
     values = c("#800080", "#4b0082", "#0000ff", "#00ff00", "#ffff00",
                "#ffa500", "#ff0000"),
-    breaks = c("W", "B", "A", "N", "H", "O", ""),
-    labels = c("Caucasian", "African", "Asian", "Native American",
+    breaks = c("Caucasian/White", "African/African American",
+               "Asian/Asian American", "Native American",
+               "Hispanic", "Other", "Unknown"),
+    labels = c("Caucasian/White", "African/African American",
+               "Asian/Asian American", "Native American",
                "Hispanic", "Other", "Unknown")
   )
 
@@ -115,15 +130,41 @@ all_latlng <- rbind(all_latlng,
 
 police_killings <- left_join(police_killings, all_latlng, by = c("city", "state"))
 
-write.csv(police_killings, "data/police-killings-with-latlng.csv", row.names = FALSE)
+state_name <- function(dt, len) {
+  full_state <- character(len)
+  for (i in seq_len(len)) {
+    full_state[i] <- as.character(abbr2state(dt[i, 10]))
+  }
+  police_killings <- cbind(dt, full_state)
+  return(police_killings)
+}
+
+full_state <- character(4717)
+for (i in seq_len(4717)) {
+  full_state[i] <- as.character(abbr2state(police_killings[i, 10]))
+}
+
+police_killings <- state_name(police_killings, nrow(police_killings))
+
+# write.csv(police_killings, "data/police-killings-with-latlng.csv", row.names = FALSE)
+
+police_killings <- read.csv("data/police-killings-with-latlng.csv",
+                            stringsAsFactors = FALSE)
 
 killings_by_state <- police_killings %>% 
-    group_by(state) 
+  group_by(state) 
 
 killings_by_state <- killings_by_state %>%
-    summarize(deaths = n(),
+    summarize(state_name = first(full_state),
+              deaths = n(),
               lat = sum(as.numeric(lat)/n()),
               lng = sum(as.numeric(lng)/n()))
+
+labels <- sprintf(
+  "State: %s<br>",
+  killings_by_state$state_name
+) %>%
+  lapply(htmltools::HTML)
 
 leaflet(data = killings_by_state) %>%
   addProviderTiles("CartoDB.Positron") %>%
@@ -132,5 +173,6 @@ leaflet(data = killings_by_state) %>%
     lat = ~lat,
     lng = ~lng,
     radius = ~deaths * 1610,
-    stroke = FALSE
+    stroke = FALSE,
+    label = labels
   ) 

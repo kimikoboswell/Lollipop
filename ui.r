@@ -6,6 +6,7 @@ library(dplyr)
 library(ggplot2)
 library(leaflet)
 library(colourpicker)
+library(plotly)
 
 intro_page <- tabPanel(
   "Introduction",
@@ -13,8 +14,7 @@ intro_page <- tabPanel(
     sidebarPanel(
       h2("What is police brutality to you?"),
       fluidPage(
-        # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
+        checkboxGroupInput("checkGroup", label = h3("Your opinion: "),
                            choices = list("Excessive Force" = "excessive force",
                                           "Racial Profiling" = "racial profiling",
                                           "Police Perjury" = "police perjury",
@@ -22,15 +22,15 @@ intro_page <- tabPanel(
                            selected = "select one"),
         hr(),
         fluidRow(column(11, verbatimTextOutput("value")))
-        ),
-        img(src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJwGkdahnf7RFU373y8To-Z5th93SRtZugPMBDbljknH2lFeBSQ&s",
-            height = "100%", width = "100%", align = "center"),
-        p("Photo by Amanda Pickett"),
-        h4(strong(sQuote("Most middle-class whites have no idea
+      ),
+      img(src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJwGkdahnf7RFU373y8To-Z5th93SRtZugPMBDbljknH2lFeBSQ&s",
+          height = "100%", width = "100%", align = "center"),
+      p("Photo by Amanda Pickett"),
+      h4(strong(sQuote("Most middle-class whites have no idea
         what if feels like to be subjected to police
         who are rountiely suspicous, rude, belligerent,
         and brutal"))),
-        p("- Dr. Benjamin Spock")
+      p("- Dr. Benjamin Spock")
     ),
     mainPanel(
       h1("Who is Most Likely to be Subjected
@@ -107,31 +107,37 @@ visualizations_page <- tabPanel(
   sidebarLayout(
     sidebarPanel(
       checkboxGroupInput("races", strong("Races:"),
-                         c("Select all" = "All",
-                           "Caucasian" = "W",
-                           "African" = "B",
-                           "Asian" = "A",
-                           "Native American" = "N",
-                           "Hispanic" = "H",
-                           "Other" = "O",
-                           "Unknown" = ""),
-                         selected = c("All",
-                                      "W",
-                                      "B",
-                                      "A",
-                                      "N",
-                                      "H",
-                                      "O",
-                                      ""),
+                         c("Caucasian/White",
+                           "African/African American",
+                           "Asian/Asian American",
+                           "Native American",
+                           "Hispanic",
+                           "Other",
+                           "Unknown"),
+                         selected = c("Caucasian/White",
+                                      "African/African American",
+                                      "Asian/Asian American",
+                                      "Native American",
+                                      "Hispanic",
+                                      "Other",
+                                      "Unknown"),
                          inline = TRUE),
       dateRangeInput("date", strong("Date range:"), 
                      start = "2015-01-01", end = "2019-11-09",
                      min = "2015-01-01", max = "2019-11-09")
     ),
     mainPanel(
-      plotOutput(outputId = "plot"),
-      br(),
-      leafletOutput(outputId = "map")
+      tabsetPanel(
+        tabPanel(
+          h4("Deaths by Race"),
+          plotlyOutput(outputId = "plot")
+          
+        ),
+        tabPanel(
+          h4("Deaths by State"),
+          leafletOutput(outputId = "map")
+        )
+      )
     )
   )
 )
@@ -141,17 +147,15 @@ conclusion_page <- tabPanel(
   "Conclusion",
   sidebarLayout(
     sidebarPanel(
-      h2("What is police brutality to you?"),
+      h2("Did your idea of police brutality change throughout our presentation?"),
       fluidPage(
-        # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup2", label = h3("Checkbox group"),
-                           choices = list("Excessive Force" = "excessive force",
-                                          "Racial Profiling" = "racial profiling",
-                                          "Police Perjury" = "police perjury",
-                                          "Abuse of Authority" = "abuse of authority"),
-                           selected = "select one"),
-        hr()
-        # fluidRow(column(11, verbatimTextOutput("value2")))
+        radioButtons("radio", label = h3("Answer:"),
+                     choices = list("Yes" = "yes",
+                                    "No" = "no",
+                                    "A little" = "a little"),
+                     selected = "select one"),
+        hr(),
+        fluidRow(column(11, verbatimTextOutput("value2")))
       )
     ),
     mainPanel(
@@ -208,54 +212,36 @@ tech_page <- tabPanel(
   "About the Tech (Appendix 1)",
   sidebarLayout(
     sidebarPanel(
-      h2("What is police brutality to you?"),
+      h2("Which R package do you think helped us the most?"),
       fluidPage(
-        # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup3", label = h3("Checkbox group"),
-                           choices = list("Excessive Force" = "excessive force",
-                                          "Racial Profiling" = "racial profiling",
-                                          "Police Perjury" = "police perjury",
-                                          "Abuse of Authority" = "abuse of authority"),
-                           selected = "select one"),
-        hr()
-        # fluidRow(column(11, verbatimTextOutput("value3")))
+        radioButtons("radio2", label = h3("Answer:"),
+                     choices = list("Dplyr" = "dplyr was",
+                                    "Shiny" = "shiny was",
+                                    "GGPlot2" = "ggplot2 was",
+                                    "All of the above" = "all of them")),
+        hr(),
+        fluidRow(column(11, htmlOutput("value3")))
       )
     ),
     mainPanel(
-      tags$a(href = "https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report",
-             "Technical Report"),
-      h2("Label Names"),
-      h5("The following section explains the names
-         of the columns in our dataset and what each
-         column means."),
-      p(strong("name:"),"This column contains the name
-        of the victim of police violence."),
-      p(strong("date:"),"This column contains the date
-        which the victim died."),
-      p(strong("manner_of_death:"),"This column briefly
-        explains how the victim died(ex:shot, tasered"),
-      p(strong("armed:"),"This column states whether
-        the victim was armed and with what."),
-      p(strong("age:"),"This column contains the 
-        victim's name."),
-      p(strong("gender:"),"This column contains the 
-        gender of the victim"),
-      p(strong("race:"),"This column contains the race
-        of the victim"),
-      p(strong("city:"),"This column contains the city
-        where the victim was killed."),
-      p(strong("state:"),"This column contains the state
-        where the victim was killed."),
-      p(strong("signs_of_mental_illness:"),"This column 
-        explains whether the victim had am ental illness"),
-      p(strong("threat_level:"),"This column explains
-        the threat they gave to supposedly instigate
-        the shooting."),
-      p(strong("flee:"),"This column describes
-        whether the victim was fleeing or not and how."),
-      p(strong("body_camera:"),"This column answers
-        whether a body camera was present on the cop
-        at the time of the shooting.")
+      h4(em("To learn more about our project and it's composition, read our
+    technical report:",tags$a(href = "https://github.com/kimikoboswell/Lollipop/wiki/Technical-Report",
+                              "Technical Report"))),
+      p("In this project, we utilized the R shiny package to create a website.
+    the website's theme was created using the shinythemes package- specifically
+    the",em("darkly"),"theme to create a serious, and dark atmosphere."),
+      p("To create the visualizations you see in the previous tab, we used
+    an array of packages, including dplyr, ggplot, leaflet, lubridate, 
+    colourpicker, and plotly. These packages allowed us to wrangle data, and 
+    create the map and chart which were used to show our findings."),
+      p("The last technology tool, though not on a computer, was the Envisioning
+    Cards. These cards, purchased by the U.W. for anyone taking classes in
+    the Informatics department, helped us to understand the greater impact
+    of our data wrangling and findings. The different prompts help us to
+    understand the affect our findings can have on indirect and direct
+    stakeholders. They taught us to consider factors such as changes in the
+    future, potential altered uses of our project, and even impact the website
+    could have if a child were to view it.")
     )
   )
 )
@@ -265,17 +251,16 @@ us_page <- tabPanel(
   "About Us",
   sidebarLayout(
     sidebarPanel(
-      h2("What is police brutality to you?"),
+      h2("What did you enjoy about the project?"),
       fluidPage(
-        # Copy the chunk below to make a group of checkboxes
-        checkboxGroupInput("checkGroup4", label = h3("Checkbox group"),
-                           choices = list("Excessive Force" = "excessive force",
-                                          "Racial Profiling" = "racial profiling",
-                                          "Police Perjury" = "police perjury",
-                                          "Abuse of Authority" = "abuse of authority"),
+        checkboxGroupInput("checkGroup4", label = h3("Answer(s):"),
+                           choices = list("Visualizations" = "visualizations",
+                                          "Concept" = "concept",
+                                          "Topic Discussed" = "topic discussed",
+                                          "Layout of the Website" = "layout of the website"),
                            selected = "select one"),
-        hr()
-        # fluidRow(column(11, verbatimTextOutput("value4")))
+        hr(),
+        fluidRow(column(11, verbatimTextOutput("value4")))
       )
     ),
     mainPanel(

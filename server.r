@@ -11,12 +11,31 @@ library(plotly)
 server <- function(input, output, session) {
   
   # You can access the value of the widget with input$checkGroup, e.g.
-  output$value <- renderPrint({ input$select })
+  output$value <- renderPrint({ input$checkGroup })
   
   # You can access the values of the widget (as a vector)
   # with input$checkGroup, e.g.
   output$value <- renderPrint({
     message_str <- paste0("To you, police brutality is: ", input$checkGroup)
+    message_str
+  })
+  
+  output$value2 <- renderPrint({ input$checkGroup })
+  
+  output$value2 <- renderPrint({
+    message_str <- paste0("Was my mind changed?: ", input$radio)
+    message_str
+  })
+  
+  output$value3 <- renderUI({
+    message_str <- paste0("The package that helped you the most:<br>", input$radio2)
+    HTML(message_str)
+  })
+  
+  output$value4 <- renderPrint({ input$checkGroup })
+  
+  output$value4 <- renderPrint({
+    message_str <- paste0("I enjoyed the ", input$checkGroup4)
     message_str
   })
   

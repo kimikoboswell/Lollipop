@@ -41,11 +41,11 @@ intro_page <- tabPanel(
       h4("What is the Problem?"),
       tags$li("Racial disparity amongst the victims of police violence"),
       h4("Why does it Matter?"),
-      tags$li("The U.S. should take action on the problem of instituionalized racism"),
+      tags$li("The U.S. should take action on the problem of institutionalized racism"),
       h4("How will it be Addressed?" ),
-      tags$li("By analyzing data from police killings of 2018 and
-              grouping the information by numerous factors such
-              as race, age, gender, etc."),
+      tags$li("By analyzing data from a police killings database and
+              grouping the racial and location data to create
+              a graph and map that will provide visual answers to our questions."),
       br(),
       img(src = "https://www.aclu.org/sites/default/files/styles/blog_main_wide_580x384/public/field_image/web18-arrestbw-1160x768.jpg?itok=FxFI4Nhc",
           height = "50%", width = "50%", align = "center"),
@@ -94,8 +94,8 @@ background_page <- tabPanel(
       h2("Research Questions"),
       p("1. What is the racial breakdown of police shooting victims?"),
       p("2. Is there a disparity between races killed by police?"),
-      p("3. Which region has the highest amount of shootings?"),
-      p("4. Which region has the highest amount of shootings per race?")
+      p("3. Which state has the highest amount of shootings?"),
+      p("4. Can this data be misleading?")
     )
   )
 )
@@ -130,12 +130,26 @@ visualizations_page <- tabPanel(
       tabsetPanel(
         tabPanel(
           h4("Deaths by Race"),
-          plotlyOutput(outputId = "plot")
-          
+          plotlyOutput(outputId = "plot"),
+          tags$p("At first glance, this graph merely shows us that the white ",
+          "population has the highest killing numbers overall, with ",
+          "the black population being second. However, when you consider the ",
+          "reality that the white population makes up 70% of the United States ",
+          "and the black population only makes up 13.4% of the population, ",
+          "the fact that the two killing numbers are so close paints a ",
+          "new image.")
         ),
         tabPanel(
           h4("Deaths by State"),
-          leafletOutput(outputId = "map")
+          leafletOutput(outputId = "map"),
+          tags$p("The same concept applied to the previous graph can be ",
+          "applied to this map, in a state-by-state way. Toggling around with ",
+          "the breakdown of the number of deaths by state you can see similar ",
+          "sized circles between black and white killing numbers. Additionally, ",
+          "when looking at the killings by state, one may think California has ",
+          "an absurdly high number of killings compared to other states. ",
+          "However, California also has one of the highest state populations ",
+          "in the country, which again shows how first glance data can be misleading.")
         )
       )
     )
